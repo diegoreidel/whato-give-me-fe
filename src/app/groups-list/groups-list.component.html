@@ -1,0 +1,41 @@
+<!-- Resources -->
+<h2>Meus Grupos</h2>
+<p>Aqui estão os grupos aos quais você faz parte:</p>
+
+
+<div class="card-container">
+    <div *ngFor="let group of groups">
+        <a class="card card-small" (click)="onSelect(group)" >
+            <span>{{group.name}}</span>
+            <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+        </a>
+    </div>
+    <!-- <div class="card card-small" tabindex="0">
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      <span>Adicionar grupo</span>
+    </div> -->
+</div>
+<div class="group-details" *ngIf="selectedGroup">
+    <h2>{{selectedGroup.name | uppercase}}</h2>
+    <div>{{selectedGroup.description}}</div>
+    <div *ngFor="let user of selectedGroup.users">
+        <p class="user-list">{{user.name}}</p>
+    </div>
+
+    <div (click)="toogleAddMember()" class="add-member card-container">
+        <div class="card" tabindex="0">
+            <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            <span>Adicionar membro</span>
+        </div>
+    </div>    
+
+    <div *ngIf="showingAddMember" class="search-hero">
+        <div class="input-group mb-3"> 
+            <input class="form-control" type="text" name="search" [(ngModel)]="newUserEmail" autocomplete="off" placeholder="Digite o email">
+            <div class="input-group-append">
+                <button (click)="submitEmail()" class="btn btn-primary"><fa-icon [icon]="faSearch"></fa-icon></button>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,34 @@
+<h2>Adicionar membro em {{group.name}}</h2>
+
+<div class="group-details container">
+    <div class="row">
+        <div class="col">
+            <div class="input-group new-member mb-3"> 
+                <input class="form-control" type="email" name="email" [(ngModel)]="email" autocomplete="off" placeholder="Digite o email">
+            </div>
+        </div>    
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="input-group new-member mb-3"> 
+                <input class="form-control" type="text" name="name" [(ngModel)]="name" autocomplete="off" placeholder="Qual o primeiro nome?">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="input-group new-member mb-3"> 
+                <input class="form-control" type="text" name="description" [(ngModel)]="description" autocomplete="off" placeholder="Como é essa pessoa?">
+            </div>
+        </div>
+    </div>
+
+    <div (click)="submit()" class="add-member card-container">
+        <div class="card" tabindex="0">
+            <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            <span>Salvar novo membro</span>
+        </div>
+    </div> 
+</div>   
