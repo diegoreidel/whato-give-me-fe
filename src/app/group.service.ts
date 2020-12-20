@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
 
 import { Group } from './interfaces/group';
 import { User } from './interfaces/user';
+import { environment } from '../environments/environment';
 
 
 @Injectable({
@@ -12,7 +12,7 @@ import { User } from './interfaces/user';
 })
 export class GroupService {
 
-  groupsUrl = 'http://localhost:3000/groups'
+  groupsUrl = `${environment.backend_url}/groups`
 
   constructor(private http: HttpClient) { }
 

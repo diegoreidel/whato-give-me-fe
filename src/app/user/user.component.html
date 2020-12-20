@@ -1,0 +1,39 @@
+<div class="member-details" *ngIf="user">
+    <h2>Mostrando os itens de {{user.name}}</h2>
+    <p>{{user.description}}</p>
+
+   <div class="member-desires-list">
+       <div class="member-desires-list-item" *ngFor="let desire of user.desires">  
+        <div>
+                <h5 class="user-name"> {{desire.summary}} </h5>
+                <p matLine> {{desire.description}} </p>
+           </div>
+       </div>
+   </div>
+</div>
+
+<div *ngIf="!showingAddDesire" (click)="toogleAddDesire()" class="add-desire card-container">
+    <div class="card" tabindex="0">
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+        <span>Adicionar desejo</span>
+    </div>
+</div>    
+
+<div *ngIf="showingAddDesire" class="search-hero">
+    <div class="input-group mb-3"> 
+        <input class="form-control" type="text" name="summary" [(ngModel)]="summary" autocomplete="off" placeholder="O que você gostaria de ganhar?">
+    </div>
+    <div class="input-group mb-3"> 
+        <input class="form-control" type="text" name="description" [(ngModel)]="description" autocomplete="off" placeholder="Adicione outros detalhes">
+    </div>
+</div>
+
+<div *ngIf="showingAddDesire" (click)="saveDesire()" class="card-container">
+    <div class="card" tabindex="0">
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+        <span>Salvar</span>
+    </div>
+</div>       
+
+
+<a routerLink="/groups" routerLinkActive="active">Voltar</a>

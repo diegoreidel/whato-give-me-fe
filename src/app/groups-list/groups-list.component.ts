@@ -11,6 +11,8 @@ import * as fromGroup from '../group.reducer';
 import { AddMemberState } from '../state/add-member-state';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
+import { UserState } from '../state/user-state';
+import { seeMember } from '../user.actions';
 
 @Component({
   selector: 'app-groups-list',
@@ -29,6 +31,7 @@ export class GroupsListComponent implements OnInit {
     private groupService: GroupService, 
     private userService: UserService,
     private store: Store<AddMemberState>, 
+    private userStore: Store<UserState>,
     private router: Router,
     private route: ActivatedRoute) { }
 
@@ -55,6 +58,11 @@ export class GroupsListComponent implements OnInit {
         this.router.navigate(['users/add'], { relativeTo: this.route });
       }
     });
+  }
+
+  seeUser(selected: User) {
+    this.userStore.dispatch(seeMember({member: ({user: selected})}));
+    this.router.navigate(['/users']);
   }
 
 }

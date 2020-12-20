@@ -1,5 +1,8 @@
 <!-- Resources -->
-<h2>Meus Grupos</h2>
+<h1>Grupos</h1>
+<p>Selecione o grupo para ver os membros.</p>
+<p>Ao selecionar um membro, você poderá ver o que ele quer ganhar de natal :)</p>
+<br />
 <p>Aqui estão os grupos aos quais você faz parte:</p>
 
 
@@ -18,9 +21,20 @@
 <div class="group-details" *ngIf="selectedGroup">
     <h2>{{selectedGroup.name | uppercase}}</h2>
     <div>{{selectedGroup.description}}</div>
-    <div *ngFor="let user of selectedGroup.users">
-        <p class="user-list">{{user.name}}</p>
-    </div>
+
+   <div class="group-members-list">
+       <div class="group-members-list-item" *ngFor="let user of selectedGroup.users">
+        <div>
+            <div class="float-right">
+                <button (click)=seeUser(user) type="button" class="btn btn-primary">Ver desejos</button>
+            </div>
+           </div>   
+        <div>
+                <h5 class="user-name"> {{user.name}} </h5>
+                <p matLine> {{user.description}} </p>
+           </div>
+       </div>
+   </div>
 
     <div (click)="toogleAddMember()" class="add-member card-container">
         <div class="card" tabindex="0">
